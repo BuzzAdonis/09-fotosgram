@@ -4,7 +4,7 @@ import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 import { PostsService } from 'src/app/services/posts.service';
 import { UiServiceService } from 'src/app/services/ui-service.service';
 import { Camera, CameraOptions } from '@awesome-cordova-plugins/camera/ngx';
-declare var window:any;
+import { WebView } from '@awesome-cordova-plugins/ionic-webview/ngx';
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
@@ -22,7 +22,9 @@ export class Tab2Page {
               private route:Router,
               private uiService:UiServiceService,
               private geolocation:Geolocation,
-              private camera:Camera) {}
+              private camera:Camera,
+              private webview: WebView
+              ) {}
  async crearPost(){
   const creado= await this.postsService.crearPost(this.post);
    if(creado){
@@ -78,7 +80,7 @@ await this.geolocation.getCurrentPosition().then((resp) => {
   }
   procesarImanes(options:CameraOptions){
     this.camera.getPicture(options).then((imageData) => {
-      let img = window.ionic.WebView.convertFileSrc(imageData);
+      let img = this.webview.convertFileSrc(imageData);
       this.postsService.subirImagen(imageData);
       this.tempImages.push(img);
      }, (err) => {
