@@ -21,10 +21,10 @@ export class UsuarioService {
   login(email:string, password:string){
     const data = {email,password};
     return new Promise(resolve=>{
-    this.http.post(`${url}/user/login`,data)
+    this.http.post(`${url}/api/login`,data)
     .subscribe(async resp => {
-      if(resp['ok']){
-      await  this.guardarToken(resp['token']);
+      if(resp['success']){
+      await  this.guardarToken(resp['data']['token']);
         resolve(true);
       }else{
         this.token=null;
@@ -60,7 +60,7 @@ export class UsuarioService {
   }
 
   getUsuario(){
-    if(!this.usuario._id){
+    if(!this.usuario.id){
       this.validaToken();
     }
     return {...this.usuario};
@@ -103,9 +103,9 @@ export class UsuarioService {
 
     return new Promise<boolean>(resolve =>{
       const headers = new HttpHeaders({
-        'x-token':this.token
+        'Authorization':'Bearer '+this.token,
       });
-      this.http.get(`${url}/user/`,{headers}).subscribe(resp =>{
+      this.http.get(`${url}/api/user`,{headers}).subscribe(resp =>{
         if(resp['ok']){
           this.usuario = resp['usuario'];
           resolve(true);

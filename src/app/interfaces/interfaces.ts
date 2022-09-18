@@ -7,7 +7,7 @@ export interface RespuestaPosts {
 }
 
 export interface Post {
-    _id?:     string;
+    id?:     string;
     mensaje?: string;
     img?:     string[];
     coords?:  string;
@@ -18,10 +18,14 @@ export interface Post {
 
 
 export interface Usuario {
-    _id?:    string;
+    id?:    string;
     nombre?: string;
     avatar?: string;
     email?:  string;
     password?:string;
+    rol?: string;
+    email_verified_at?: boolean;
+    created_at?: Date;
+    updated_at?: Date;
 }
 

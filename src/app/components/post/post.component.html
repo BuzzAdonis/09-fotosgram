@@ -12,13 +12,13 @@
 <ion-slides  pager="true" *ngIf="post.img.length > 1" >
     <ion-slide  *ngFor="let img of post.img"
                 class="image-slide"
-                [style]="(img |imagen:post.usuario._id)|domSanitazer">
+                [style]="(img |imagen:post.usuario.id)|domSanitazer">
     </ion-slide>
 </ion-slides>
 
 <ion-slides   *ngIf="post.img.length === 1" [options]="slideSoloOpts">
     <ion-slide class="image-slide"
-                [style]="(post.img[0] |imagen:post.usuario._id)|domSanitazer">
+                [style]="(post.img[0] |imagen:post.usuario.id)|domSanitazer">
     </ion-slide>
 </ion-slides>
 <app-mapa [coords]="post.coords" *ngIf="post.coords"></app-mapa>
