@@ -15,13 +15,11 @@ export class Tab2Page {
   cargandoGeo =false;
   post={
     mensaje:'',
-    coords:null,
-    position:false
+    img:'[]'
   }
   constructor(private postsService:PostsService,
               private route:Router,
               private uiService:UiServiceService,
-              private geolocation:Geolocation,
               private camera:Camera,
               private webview: WebView
               ) {}
@@ -31,8 +29,7 @@ export class Tab2Page {
     this.route.navigateByUrl('/main/tabs/tab1');
     this.post={
       mensaje:'',
-      coords:null,
-      position:false
+      img:'[]'
     }
     this.tempImages=[];
 
@@ -41,21 +38,6 @@ export class Tab2Page {
    }
   }
 
- async getGeo(){
-    if(!this.post.position){
-      this.post.coords =null;
-      return;
-    }
-    this.cargandoGeo = true;
-    
-await this.geolocation.getCurrentPosition().then((resp) => {
-  this.post.coords= `${resp.coords.latitude},${resp.coords.longitude}`;
-  this.cargandoGeo = false;
- }).catch((error) => {
-   console.log('Error para obtener location', error);
-   this.cargandoGeo = false;
- });
-  }
   camara(){
     const options: CameraOptions = {
       quality: 60,

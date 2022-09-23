@@ -24,6 +24,7 @@ export class Tab1Page implements OnInit {
   }
   sguientes(event?, pull:boolean=false){
     this.postsService.getPosts(pull).subscribe(resp =>{
+      if(resp.posts != null){
         this.posts.push(...resp.posts);
         if(event){
           event.target.complete();
@@ -31,6 +32,7 @@ export class Tab1Page implements OnInit {
             this.habilitado = false;
           }
         }
+      }
     });
   }
 }

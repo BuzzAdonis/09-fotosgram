@@ -23,20 +23,21 @@ export class PostsService {
       this.paginaPost = 0;
     }
     this.paginaPost ++;
-    return this.http.get<RespuestaPosts>(`${url}/post/?`,{
-      params:{
-        'pagina':this.paginaPost
-      }
+    const headers = new HttpHeaders({
+      'Authorization':'Bearer '+this.usuarioService.token,
     });
+    return this.http.get<RespuestaPosts>(`${url}/api/post/${this.paginaPost}`,{headers});
   }
   crearPost(post){
     const headers =new HttpHeaders({
-      'x-token':this.usuarioService.token
+      'Authorization':'Bearer '+this.usuarioService.token,
     });
+    post._id= this.usuarioService.getUsuario().id;
     return new Promise(resolve =>{
-    this.http.post(`${url}/post`,post,{headers}).subscribe(resp =>{
+    this.http.post(`${url}/api/post`,post,{headers}).subscribe(resp =>{
       if(resp['ok']){
-        this.nuevoPost.emit(resp['post']);
+        console.log(resp);
+        this.nuevoPost.emit(resp['posts']);
         resolve(true);
       }else{
         resolve(false);

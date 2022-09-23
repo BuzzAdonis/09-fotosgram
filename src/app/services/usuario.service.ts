@@ -46,7 +46,7 @@ export class UsuarioService {
 
   registro(usuario:Usuario){
     return new Promise(resolve => {
-      this.http.post(`${url}/user/create`,usuario).subscribe(async resp =>{
+      this.http.post(`${url}/api/register`,usuario).subscribe(async resp =>{
         if(resp['ok']){
          await this.guardarToken(resp['token']);
           resolve(true);
@@ -75,9 +75,9 @@ export class UsuarioService {
   actualizarUsuario(usuario:Usuario){
     return new Promise(resolve => {
       const headers = new HttpHeaders({
-            'x-token':this.token
+        'Authorization':'Bearer '+this.token
           });
-          this.http.post(`${url}/user/update`,usuario,{headers}).subscribe(resp=>{
+          this.http.put(`${url}/api/updateUser/${usuario.id}`,usuario,{headers}).subscribe(resp=>{
             if(resp['ok']){
               this.guardarToken(resp['token']);
               resolve(true);

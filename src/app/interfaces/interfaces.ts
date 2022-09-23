@@ -10,7 +10,6 @@ export interface Post {
     id?:     string;
     mensaje?: string;
     img?:     string[];
-    coords?:  string;
     usuario?: Usuario;
     created?: string;
 }
@@ -19,7 +18,7 @@ export interface Post {
 
 export interface Usuario {
     id?:    string;
-    nombre?: string;
+    name?: string;
     avatar?: string;
     email?:  string;
     password?:string;

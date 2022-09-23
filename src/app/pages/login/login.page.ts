@@ -20,7 +20,7 @@ export class LoginPage implements OnInit {
   regiterUser:Usuario = {
     email:'test@test.com',
     password:'123456',
-    nombre:'Sindy Nero',
+    name:'Sindy Nero',
     avatar:'av-1.png'
   }
   constructor(private usuarioServices:UsuarioService,
