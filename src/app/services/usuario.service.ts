@@ -75,7 +75,8 @@ export class UsuarioService {
   actualizarUsuario(usuario:Usuario){
     return new Promise(resolve => {
       const headers = new HttpHeaders({
-        'Authorization':'Bearer '+this.token
+        'Authorization':'Bearer '+this.token,
+        'Accept':'application/json'
           });
           this.http.put(`${url}/api/updateUser/${usuario.id}`,usuario,{headers}).subscribe(resp=>{
             if(resp['ok']){
@@ -104,6 +105,7 @@ export class UsuarioService {
     return new Promise<boolean>(resolve =>{
       const headers = new HttpHeaders({
         'Authorization':'Bearer '+this.token,
+        'Accept':'application/json'
       });
       this.http.get(`${url}/api/user`,{headers}).subscribe(resp =>{
         if(resp['ok']){

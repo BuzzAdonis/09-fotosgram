@@ -14,15 +14,10 @@ export class LoginPage implements OnInit {
   @ViewChild('slidePricipal') slides:IonSlides;
 
   loginUser = {
-    email:'prueba@prueba.com',
+    email:'test@test.com',
     password:'123456'
   }
-  regiterUser:Usuario = {
-    email:'test@test.com',
-    password:'123456',
-    name:'Sindy Nero',
-    avatar:'av-1.png'
-  }
+
   constructor(private usuarioServices:UsuarioService,
               private navController:NavController,
               private uiService:UiServiceService) {
@@ -45,27 +40,5 @@ export class LoginPage implements OnInit {
     this.uiService.alertaInformativa('Usuario y contraceña no son correctos');
    }
   }
- async registrado(fregistrado:NgForm){
-    if(!fregistrado.valid){return;}
-    const valido = await this.usuarioServices.registro(this.regiterUser);
-    if(valido){
-      //Navagar A tabs
-      this.navController.navigateRoot('/main/tabs/tab1',{animated:true})
-     }else{
-      //Alerta Usuario/Contraceña no son correto
-      this.uiService.alertaInformativa('Ese correo electronico ya exite');
-     }
 
-  }
-
-  async mostrarLogin(){
-    this.slides.lockSwipes(false);
-    this.slides.slideTo(0);
-    this.slides.lockSwipes(true);
-  }
-  async mostrarRegistro(){
-    this.slides.lockSwipes(false);
-    this.slides.slideTo(1);
-    this.slides.lockSwipes(true);
-  }
 }

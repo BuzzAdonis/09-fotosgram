@@ -7,7 +7,7 @@ const url = environment.url;
 export class ImagenPipe implements PipeTransform {
 
   transform(img: string, userId: string): string {
-    return `${url}/post/imagen/${userId}/${img}`;
+    return `${url}/api/imagen/${userId}/${img}`;
   }
 
 }

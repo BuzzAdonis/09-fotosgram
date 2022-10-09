@@ -19,6 +19,22 @@
 
   <ion-list>
     
+   <!-- <ion-item>
+      <ion-label>Curso</ion-label>
+      <ion-select interface="popover" name="Curso" placeholder="Curso" [(ngModel)]="regiterUser.rol" required>
+        <ion-select-option value="admin">6toA</ion-select-option>
+        <ion-select-option selected value="padre">7moB</ion-select-option>
+        <ion-select-option value="profesor">1roA</ion-select-option>
+      </ion-select>
+
+          <ion-label>Padres</ion-label>
+          <ion-select interface="popover" name="Padres" placeholder="Padres" [(ngModel)]="regiterUser.rol" required>
+            <ion-select-option value="admin">6toA</ion-select-option>
+            <ion-select-option selected value="padre">7moB</ion-select-option>
+            <ion-select-option value="profesor">1roA</ion-select-option>
+          </ion-select>
+    </ion-item>-->
+
     <ion-item>
       <ion-label position="floating">Mensaje</ion-label>
       <ion-textarea [(ngModel)]="post.mensaje"></ion-textarea>
@@ -46,7 +62,16 @@
       </ion-button>
     </ion-col>
   </ion-row>
-
+  <ion-row>
+    <ion-col size="12">
+      <ion-button expand="full"
+                  shape="round"
+                  (click)="camara()">
+        <ion-icon slot="start" name="document-attach"></ion-icon>
+        Archivo
+      </ion-button>
+    </ion-col>
+  </ion-row>
   <ion-row>
     <ion-col size="3" *ngFor="let image of tempImages">
       <ion-card>

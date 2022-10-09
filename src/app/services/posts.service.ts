@@ -4,6 +4,7 @@ import { FileTransfer, FileTransferObject, FileUploadOptions } from '@awesome-co
 import { environment } from 'src/environments/environment';
 import { Post, RespuestaPosts } from '../interfaces/interfaces';
 import { UsuarioService } from './usuario.service';
+import Swal from 'sweetalert2';
 
 const url = environment.url;
 @Injectable({
@@ -25,18 +26,62 @@ export class PostsService {
     this.paginaPost ++;
     const headers = new HttpHeaders({
       'Authorization':'Bearer '+this.usuarioService.token,
+      'Accept':'application/json'
     });
     return this.http.get<RespuestaPosts>(`${url}/api/post/${this.paginaPost}`,{headers});
+  }
+
+ async deletePost(post:Post){
+   await  Swal.fire({
+      title: 'Eliminar Post',
+      text: "Esta seguro que desea eliminar este Post",
+      icon: 'warning',
+      showCancelButton: true,
+      heightAuto: false,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, deseo eliminarlo',
+      cancelButtonText:'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const headers =new HttpHeaders({
+          'Authorization':'Bearer '+this.usuarioService.token,
+        });
+        return new Promise(resolve =>{
+          this.http.delete(`${url}/api/post/${post.id}`,{headers}).subscribe( async resp =>{
+            if(resp['ok']){
+              this.nuevoPost.emit(resp['posts']);
+           await  Swal.fire({
+                title:'Borrado',
+                text:'El Post se elimino',
+                icon:'success',
+                heightAuto: false
+              });
+              resolve(true);
+            }else{
+            await  Swal.fire({
+                title:'Error',
+                text:'No se pudo Borrar ',
+                icon:'error',
+                heightAuto: false
+              });
+              resolve(false);
+            }
+      
+          });
+          });
+
+      }
+    });
+    return Promise.resolve(false);
   }
   crearPost(post){
     const headers =new HttpHeaders({
       'Authorization':'Bearer '+this.usuarioService.token,
     });
-    post._id= this.usuarioService.getUsuario().id;
     return new Promise(resolve =>{
     this.http.post(`${url}/api/post`,post,{headers}).subscribe(resp =>{
       if(resp['ok']){
-        console.log(resp);
         this.nuevoPost.emit(resp['posts']);
         resolve(true);
       }else{
@@ -51,10 +96,11 @@ export class PostsService {
     const options:FileUploadOptions={
         fileKey:'image',
         headers:{
-          'x-token':this.usuarioService.token
+          'Authorization':'Bearer '+this.usuarioService.token,
+          'Accept':'*/*',
         }
     };
     const fileTransfer:FileTransferObject = this.fileTransfer.create();
-    fileTransfer.upload(img,`${url}/post/upload`, options);
+    fileTransfer.upload(img,`${url}/api/updateImagen`, options);
   }
 }

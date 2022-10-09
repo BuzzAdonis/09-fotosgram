@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 import { PostsService } from 'src/app/services/posts.service';
 import { UiServiceService } from 'src/app/services/ui-service.service';
 import { Camera, CameraOptions } from '@awesome-cordova-plugins/camera/ngx';

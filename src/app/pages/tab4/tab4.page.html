@@ -1,11 +1,37 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>tab4</ion-title>
+    <ion-title>Horarios</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
   <ion-button (click)="onClick()" expand="block" >
-      Mostrar action-sheet
+      Mostrar Alumnos
   </ion-button>
+    <ion-grid class="ion-margin">
+      <ion-row>
+        <ion-col>Materia</ion-col>
+        <ion-col>Horas</ion-col>
+        <ion-col>Profesor</ion-col>
+        <ion-col>Asitencia </ion-col>
+      </ion-row>
+      <ion-row  class="success" >
+        <ion-col>Matematica</ion-col>
+        <ion-col>9:00-10:00</ion-col>
+        <ion-col>Carlos Nuñez</ion-col>
+        <ion-col>P</ion-col>
+      </ion-row>
+      <ion-row class="danger" >
+        <ion-col>Español </ion-col>
+        <ion-col>12:00-13:00</ion-col>
+        <ion-col>Adonis Alexander Severino</ion-col>
+        <ion-col>A</ion-col>
+      </ion-row>
+      <ion-row  class="warning">
+        <ion-col>Historia</ion-col>
+        <ion-col>12:00-13:00</ion-col>
+        <ion-col>Wichi</ion-col>
+        <ion-col>E</ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-content>

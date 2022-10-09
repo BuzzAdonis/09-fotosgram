@@ -21,35 +21,20 @@ export class Tab4Page implements OnInit {
       header: 'Albumes',
       mode:'ios',
       backdropDismiss:false,
-      buttons: [{
-        text: 'Delete',
-        role: 'destructive',
-        icon: 'trash-outline',
-        id: 'delete-button',
-        cssClass:'rojo',
-        data: {
-          type: 'delete'
-        },
-        handler: () => {
-          console.log('Delete clicked');
-        }
-      }, {
-        text: 'Share',
-        icon: 'share-outline',
+      buttons: [ {
+        text: 'Nino de los santos ',
         data: 10,
         handler: () => {
           console.log('Share clicked');
         }
       }, {
-        text: 'Play (open modal)',
-        icon: 'caret-forward-circle-outline',
+        text: 'Hector de los santos',
         data: 'Data value',
         handler: () => {
           console.log('Play clicked');
         }
       }, {
-        text: 'Favorite',
-        icon: 'heart-outline',
+        text: 'Emilia de lo santos',
         handler: () => {
           console.log('Favorite clicked');
         }

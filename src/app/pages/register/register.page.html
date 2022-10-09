@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides class="mainSlide"
+               #slidePricipal>
+<ion-slide>
+  <ion-grid fixed>
+    <app-avatar-selector (avatarSel)="regiterUser.avatar = $event"></app-avatar-selector>
+        <form (ngSubmit)="registrado(fregistrado)" #fregistrado="ngForm">
+            <ion-row>
+                <ion-col>
+                    
+                    <ion-list>
+                        
+                        <ion-item>
+                        <ion-label>Email</ion-label>
+                        <ion-input name="email" 
+                                    type="email"
+                                    [(ngModel)]="regiterUser.email"
+                                    required></ion-input>
+                        </ion-item>
+
+                        <ion-item>
+                        <ion-label>Nombres</ion-label>
+                        <ion-input name="name"
+                                    type="text"
+                                    [(ngModel)]="regiterUser.name"
+                                    required></ion-input>
+                        </ion-item>
+
+                        <ion-item>
+                          <ion-label>Apellidos</ion-label>
+                          <ion-input name="lastname"
+                                      type="text"
+                                      [(ngModel)]="regiterUser.lastname"
+                                      required></ion-input>
+                        </ion-item>
+                        <ion-item>
+                          <ion-label>Rol</ion-label>
+                          <ion-select interface="popover" name="rol" placeholder="Rol" [(ngModel)]="regiterUser.rol" required>
+                            <ion-select-option value="admin">Admin</ion-select-option>
+                            <ion-select-option selected value="padre">Padre</ion-select-option>
+                            <ion-select-option value="profesor">Profesor</ion-select-option>
+                          </ion-select>
+                        </ion-item>
+                        <ion-item>
+                          <ion-label>Direccion</ion-label>
+                          <ion-textarea name="password"
+                                      type="text"
+                                      [(ngModel)]="regiterUser.direccion"
+                                      required></ion-textarea>
+                          </ion-item>
+                          <ion-item>
+                            <ion-label>Documento de identidad</ion-label>
+                            <ion-input name="dni"
+                                        type="text"
+                                        [(ngModel)]="regiterUser.dni"
+                                        required></ion-input>
+                            </ion-item>
+                            <ion-item>
+                              <ion-label>Sexo</ion-label>
+                              <ion-select interface="popover" name="sexo" placeholder="sexo" [(ngModel)]="regiterUser.sexo" required>
+                                <ion-select-option value="admin">Masculino</ion-select-option>
+                                <ion-select-option selected value="padre">Femenino</ion-select-option>
+                              </ion-select>
+                              </ion-item>
+                              <ion-item>
+                                <ion-label>Numero de Celular </ion-label>
+                                <ion-input name="Numero_cel"
+                                            type="number"
+                                            [(ngModel)]="regiterUser.Numero_cel"
+                                            required></ion-input>
+                                </ion-item>
+                                <ion-item>
+                                  <ion-label>Numero de Telefono</ion-label>
+                                  <ion-input name="Numero_tel"
+                                              type="number"
+                                              [(ngModel)]="regiterUser.Numero_tel"
+                                              required></ion-input>
+                                  </ion-item>
+                    </ion-list>
+                </ion-col>
+            </ion-row>
+            
+            <ion-row>
+            <ion-col>
+                <ion-button type="submit"
+                            color="tertiary"
+                            shape="round">
+                    Crear usuario
+                </ion-button>
+            </ion-col>
+        </ion-row>
+        
+        </form>
+    </ion-grid>
+  </ion-slide>
+</ion-slides>
+</ion-content>
