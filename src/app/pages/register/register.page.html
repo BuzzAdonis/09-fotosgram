@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>register</ion-title>
+    <ion-title>Registros de Padres</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -49,7 +49,7 @@
                         </ion-item>
                         <ion-item>
                           <ion-label>Direccion</ion-label>
-                          <ion-textarea name="password"
+                          <ion-textarea name="direccion"
                                       type="text"
                                       [(ngModel)]="regiterUser.direccion"
                                       required></ion-textarea>
@@ -64,23 +64,23 @@
                             <ion-item>
                               <ion-label>Sexo</ion-label>
                               <ion-select interface="popover" name="sexo" placeholder="sexo" [(ngModel)]="regiterUser.sexo" required>
-                                <ion-select-option value="admin">Masculino</ion-select-option>
-                                <ion-select-option selected value="padre">Femenino</ion-select-option>
+                                <ion-select-option value="1">Masculino</ion-select-option>
+                                <ion-select-option selected value="0">Femenino</ion-select-option>
                               </ion-select>
                               </ion-item>
                               <ion-item>
                                 <ion-label>Numero de Celular </ion-label>
                                 <ion-input name="Numero_cel"
-                                            type="number"
+                                            type="tel"
                                             [(ngModel)]="regiterUser.Numero_cel"
                                             required></ion-input>
                                 </ion-item>
                                 <ion-item>
                                   <ion-label>Numero de Telefono</ion-label>
                                   <ion-input name="Numero_tel"
-                                              type="number"
+                                              type="tel"
                                               [(ngModel)]="regiterUser.Numero_tel"
-                                              required></ion-input>
+                                              ></ion-input>
                                   </ion-item>
                     </ion-list>
                 </ion-col>

@@ -46,10 +46,13 @@ export class UsuarioService {
 
   registro(usuario:Usuario){
     return new Promise(resolve => {
-      this.http.post(`${url}/api/register`,usuario).subscribe(async resp =>{
+      const headers = new HttpHeaders({
+        'Authorization':'Bearer '+this.token,
+        'Accept':'application/json'
+          });
+      this.http.post(`${url}/api/register`,usuario,{headers}).subscribe(async resp =>{
         if(resp['ok']){
-         await this.guardarToken(resp['token']);
-          resolve(true);
+          resolve(resp);
         }else{
           this.token=null;
           this.storage.clear();

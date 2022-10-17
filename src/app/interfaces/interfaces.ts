@@ -10,6 +10,8 @@ export interface Post {
     id?:     string;
     mensaje?: string;
     img?:     string[];
+    curso?: string;
+    usuario_id?: number;
     usuario?: Usuario;
     created?: string;
 }
@@ -24,7 +26,33 @@ export interface Usuario {
     password?:string;
     rol?: string;
     email_verified_at?: boolean;
+    lastname?:string;
+    direccion?:string;
+    dni?:string;
+    sexo?:boolean;
+    Numero_cel?:string;
+    Numero_tel?:string;
     created_at?: Date;
     updated_at?: Date;
 }
 
+export interface Alumnos{
+    id?:    string;
+    usuario_id?:number;
+    name?: string;
+    lastname?:string;
+    Numero_en_lista?:number;
+    edad?:number;
+    Fecha_nacimento?:Date;
+    sexo?:boolean;
+    curso?:string;
+    created_at?: Date;
+    updated_at?: Date;
+}
+
+export interface Cursos{
+    id?:    string;
+    name?: string;
+    created_at?: Date;
+    updated_at?: Date;
+}

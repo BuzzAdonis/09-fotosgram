@@ -12,9 +12,12 @@ import { WebView } from '@awesome-cordova-plugins/ionic-webview/ngx';
 export class Tab2Page {
   tempImages:string[]=[];
   cargandoGeo =false;
+  usuario:any[]=[];
   post={
     mensaje:'',
-    img:'[]'
+    img:'[]',
+    curso:null,
+    usuario_id:null
   }
   constructor(private postsService:PostsService,
               private route:Router,
@@ -28,7 +31,9 @@ export class Tab2Page {
     this.route.navigateByUrl('/main/tabs/tab1');
     this.post={
       mensaje:'',
-      img:'[]'
+      img:'[]',
+      curso:null,
+      usuario_id:null
     }
     this.tempImages=[];
 
@@ -36,7 +41,10 @@ export class Tab2Page {
     this.uiService.presentToast('Error: No se pudo crear tu post')
    }
   }
-
+ async CargarPadres(){
+    let padres = await this.postsService.getPadres(this.post.curso);
+    this.usuario=padres;
+  }
   camara(){
     const options: CameraOptions = {
       quality: 60,

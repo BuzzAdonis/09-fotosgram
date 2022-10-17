@@ -19,21 +19,19 @@
 
   <ion-list>
     
-   <!-- <ion-item>
+   <ion-item>
       <ion-label>Curso</ion-label>
-      <ion-select interface="popover" name="Curso" placeholder="Curso" [(ngModel)]="regiterUser.rol" required>
-        <ion-select-option value="admin">6toA</ion-select-option>
-        <ion-select-option selected value="padre">7moB</ion-select-option>
-        <ion-select-option value="profesor">1roA</ion-select-option>
+      <ion-select interface="popover" name="Curso" placeholder="Curso" [(ngModel)]="post.curso" (ngModelChange)="CargarPadres()">
+        <ion-select-option value="6toA">6toA</ion-select-option>
+        <ion-select-option selected value="7moB">7moB</ion-select-option>
+        <ion-select-option value="1roA">1roA</ion-select-option>
       </ion-select>
 
           <ion-label>Padres</ion-label>
-          <ion-select interface="popover" name="Padres" placeholder="Padres" [(ngModel)]="regiterUser.rol" required>
-            <ion-select-option value="admin">6toA</ion-select-option>
-            <ion-select-option selected value="padre">7moB</ion-select-option>
-            <ion-select-option value="profesor">1roA</ion-select-option>
+          <ion-select interface="popover" name="Padres" placeholder="Padres" [(ngModel)]="post.usuario_id">
+            <ion-select-option *ngFor="let padre of usuario" [value]="padre.id">{{padre.Nombres+' '+padre.Apellidos}}</ion-select-option>
           </ion-select>
-    </ion-item>-->
+    </ion-item>
 
     <ion-item>
       <ion-label position="floating">Mensaje</ion-label>

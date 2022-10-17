@@ -1,0 +1,95 @@
+
+<ion-header class="ion-no-border" translucent>
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button 
+      defaultHref="/"
+      color="primary"
+      text="Regresar"
+      mode="ios"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-capitalize" >Registros de Alumnos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides class="mainSlide"
+               #slidePricipal>
+<ion-slide>
+  <ion-grid fixed>
+        <form (ngSubmit)="registrado(fregistrado)" #fregistrado="ngForm">
+            <ion-row>
+                <ion-col>
+                    
+                    <ion-list>
+                        
+                        <ion-item>
+                        <ion-label>Nombres</ion-label>
+                        <ion-input name="name"
+                                    type="text"
+                                    [(ngModel)]="regiterAlumno.name"
+                                    required></ion-input>
+                        </ion-item>
+
+                        <ion-item>
+                          <ion-label>Apellidos</ion-label>
+                          <ion-input name="lastname"
+                                      type="text"
+                                      [(ngModel)]="regiterAlumno.lastname"
+                                      required></ion-input>
+                        </ion-item>
+                        <ion-item>
+                          <ion-label>Numero de lista</ion-label>
+                          <ion-input name="Numero_en_lista"
+                                      type="text"
+                                      [(ngModel)]="regiterAlumno.Numero_en_lista"
+                                      required></ion-input>
+                        </ion-item>
+                        <ion-item>
+                          <ion-label>Edad</ion-label>
+                          <ion-input name="edad"
+                                      type="tel"
+                                      [(ngModel)]="regiterAlumno.edad"
+                                      required></ion-input>
+                          </ion-item>
+                          <ion-item>
+                            <ion-label>Fecha de nacimiento</ion-label>
+                            <ion-input name="Fecha_nacimento"
+                                        type="date"
+                                        [(ngModel)]="regiterAlumno.Fecha_nacimento"
+                                        required></ion-input>
+                            </ion-item>
+                            <ion-item>
+                              <ion-label>Sexo</ion-label>
+                              <ion-select interface="popover" name="sexo"[(ngModel)]="regiterAlumno.sexo" required>
+                                <ion-select-option value="1">Masculino</ion-select-option>
+                                <ion-select-option selected value="0">Femenino</ion-select-option>
+                              </ion-select>
+                              </ion-item>
+                              <ion-item>
+                                <ion-label>Curso</ion-label>
+                                <ion-select interface="popover" name="curso" [(ngModel)]="regiterAlumno.curso" required>
+                                  <ion-select-option *ngFor="let curso of cursos" [value]="curso.name">{{curso.name}}</ion-select-option>
+                                </ion-select>
+                                </ion-item>
+                    </ion-list>
+                </ion-col>
+            </ion-row>
+            
+            <ion-row>
+            <ion-col>
+                <ion-button type="submit"
+                            color="tertiary"
+                            shape="round">
+                    Añadir Alumnos 
+                </ion-button>
+            </ion-col>
+        </ion-row>
+        
+        </form>
+    </ion-grid>
+  </ion-slide>
+</ion-slides>
+</ion-content>

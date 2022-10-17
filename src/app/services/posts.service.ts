@@ -30,6 +30,16 @@ export class PostsService {
     });
     return this.http.get<RespuestaPosts>(`${url}/api/post/${this.paginaPost}`,{headers});
   }
+  getPadres(curso:string):any{
+    const headers =new HttpHeaders({
+      'Authorization':'Bearer '+this.usuarioService.token,
+    });
+    return new Promise<any>(resolve =>{
+    this.http.get(`${url}/api/post/padres/${curso}`,{headers}).subscribe(resp =>{
+      resolve(resp || {});
+    });
+    });
+  }
 
  async deletePost(post:Post){
    await  Swal.fire({

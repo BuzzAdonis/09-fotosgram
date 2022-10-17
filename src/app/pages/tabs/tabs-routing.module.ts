@@ -32,6 +32,10 @@ const routes: Routes = [
         loadChildren: () => import('../register/register.module').then(m => m.RegisterPageModule)
       },
       {
+        path: 'alumnos/:id',
+        loadChildren: () => import('../alumnos/alumnos.module').then( m => m.AlumnosPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'

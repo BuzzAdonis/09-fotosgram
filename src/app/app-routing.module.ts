@@ -16,18 +16,6 @@ const routes: Routes = [
     path:'',
     pathMatch:'full',
     redirectTo:'/main/tabs/tab1'
-  },
-  {
-    path: 'tab4',
-    loadChildren: () => import('./pages/tab4/tab4.module').then( m => m.Tab4PageModule)
-  },
-  {
-    path: 'tab5',
-    loadChildren: () => import('./pages/tab5/tab5.module').then( m => m.Tab5PageModule)
-  },
-  {
-    path: 'register',
-    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
   }
 
 ];

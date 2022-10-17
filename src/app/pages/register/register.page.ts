@@ -12,11 +12,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class RegisterPage implements OnInit { 
   @ViewChild('slidePricipal') slides:IonSlides;
-  regiterUser:Usuario = {
-    email:'test@test.com',
-    password:'123456',
-    name:'Sindy Nero',
-    
+  regiterUser:Usuario = { 
     avatar:'av-1.png'
   }
 
@@ -31,10 +27,13 @@ export class RegisterPage implements OnInit {
 
   async registrado(fregistrado:NgForm){
     if(!fregistrado.valid){return;}
+    this.regiterUser.password = this.regiterUser.dni;
     const valido = await this.usuarioServices.registro(this.regiterUser);
-    if(valido){
-      //Navagar A tabs
-      this.navController.navigateRoot('/main/tabs/tab1',{animated:true})
+    if(valido['ok']){
+      //Navagar A tabs 
+      await this.uiService.alertaInformativa('usuario creado');
+      this.navController.navigateRoot(`main/tabs/alumnos/${valido['id']}`,{animated:true})
+
      }else{
       //Alerta Usuario/Contraceña no son correto
       this.uiService.alertaInformativa('Ese correo electronico ya exite');

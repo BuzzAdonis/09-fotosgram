@@ -19,19 +19,31 @@
         <ion-col>Matematica</ion-col>
         <ion-col>9:00-10:00</ion-col>
         <ion-col>Carlos Nuñez</ion-col>
-        <ion-col>P</ion-col>
+        <ion-select interface="popover" name="rol" placeholder="P" [(ngModel)]="regiterUser.rol" required>
+          <ion-select-option value="P">P</ion-select-option>
+          <ion-select-option value="A" selected>A</ion-select-option>
+          <ion-select-option value="E">E</ion-select-option>
+        </ion-select>
       </ion-row>
       <ion-row class="danger" >
         <ion-col>Español </ion-col>
         <ion-col>12:00-13:00</ion-col>
         <ion-col>Adonis Alexander Severino</ion-col>
-        <ion-col>A</ion-col>
+        <ion-select interface="popover" name="rol" placeholder="A" [(ngModel)]="regiterUser.rol" required>
+          <ion-select-option value="P" selected>P</ion-select-option>
+          <ion-select-option value="A">A</ion-select-option>
+          <ion-select-option value="E">E</ion-select-option>
+        </ion-select>
       </ion-row>
       <ion-row  class="warning">
         <ion-col>Historia</ion-col>
-        <ion-col>12:00-13:00</ion-col>
+        <ion-col>13:00-14:00</ion-col>
         <ion-col>Wichi</ion-col>
-        <ion-col>E</ion-col>
+        <ion-select interface="popover" name="rol" placeholder="E" [(ngModel)]="regiterUser.rol" required>
+          <ion-select-option value="P">P</ion-select-option>
+          <ion-select-option value="A">A</ion-select-option>
+          <ion-select-option value="E"selected>E</ion-select-option>
+        </ion-select>
       </ion-row>
     </ion-grid>
   </ion-content>
